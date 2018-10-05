@@ -11,7 +11,7 @@ const chalk = require("chalk");
 let __filePath = "";
 portfinder.basePort = process.env.PORT || 3000;
 
-program.version("0.0.1", "-v, --version").action(async filePath => {
+program.version("1.1", "-v, --version").action(async filePath => {
   if (typeof filePath === "object")
     throw new Error("Params missing, provide module path");
   if (filePath.includes(".js")) {
