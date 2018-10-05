@@ -14,7 +14,7 @@ program.version("0.0.1", "-v, --version").action(filePath => {
   } else {
     throw new Error("Invalid params passed, provide a valid module path");
   }
-  app.get("/", async (req, res) => {
+  app.get("*", async (req, res) => {
     try {
       var lib = path.join(process.cwd(), filePath);
       require(lib)(req, res);
