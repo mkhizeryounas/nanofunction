@@ -6,6 +6,7 @@ const express = require("express");
 const app = express();
 const portfinder = require("portfinder");
 var reload = require("require-reload")(require);
+const chalk = require("chalk");
 
 portfinder.basePort = process.env.PORT || 3000;
 
@@ -21,11 +22,12 @@ program.version("0.0.1", "-v, --version").action(async filePath => {
     try {
       var lib = path.join(process.cwd(), filePath);
       await reload(lib)(req, res);
+      console.log("200 - Success");
     } catch (err) {
-      console.log("Err", err);
-      res.status(500).json({
+      console.log("Error 400 - ", chalk.red(err));
+      res.status(400).json({
         status: false,
-        error: "Internal server error",
+        error: "Bad Request",
         data: {}
       });
     }
@@ -37,6 +39,6 @@ program.version("0.0.1", "-v, --version").action(async filePath => {
 program.parse(process.argv);
 
 process.on("uncaughtException", function(err) {
-  console.error(err);
-  console.log("Node NOT Exiting...");
+  console.error(chalk.red("ERROR 500 - ", err.stack));
+  console.error(chalk.blue("Edit module to restart"));
 });
