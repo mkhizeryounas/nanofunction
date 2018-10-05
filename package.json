@@ -15,7 +15,8 @@
   "dependencies": {
     "commander": "^2.18.0",
     "express": "^4.16.3",
-    "portfinder": "^1.0.17"
+    "portfinder": "^1.0.17",
+    "require-reload": "^0.2.2"
   },
   "devDependencies": {}
 }

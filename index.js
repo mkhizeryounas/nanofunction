@@ -5,6 +5,7 @@ const program = require("commander");
 const express = require("express");
 const app = express();
 const portfinder = require("portfinder");
+var reload = require("require-reload")(require);
 
 portfinder.basePort = process.env.PORT || 3000;
 
@@ -19,7 +20,7 @@ program.version("0.0.1", "-v, --version").action(async filePath => {
   app.use(async (req, res) => {
     try {
       var lib = path.join(process.cwd(), filePath);
-      await require(lib)(req, res);
+      await reload(lib)(req, res);
     } catch (err) {
       console.log("Err", err);
       res.status(500).json({
