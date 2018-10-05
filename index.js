@@ -35,3 +35,8 @@ program.version("0.0.1", "-v, --version").action(async filePath => {
 });
 
 program.parse(process.argv);
+
+process.on("uncaughtException", function(err) {
+  console.error(err);
+  console.log("Node NOT Exiting...");
+});
