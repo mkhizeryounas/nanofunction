@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^2.18.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "portfinder": "^1.0.17"
   },
   "devDependencies": {}
 }
