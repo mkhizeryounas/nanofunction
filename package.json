@@ -9,7 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "nanofunction",
+    "microservice",
+    "API",
+    "serverless",
+    "functions",
+    "service"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
