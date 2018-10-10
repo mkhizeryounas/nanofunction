@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const program = require("commander");
 const express = require("express");
+var bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
 const portfinder = require("portfinder");
@@ -10,6 +11,8 @@ const reload = require("require-reload")(require);
 const chalk = require("chalk");
 let __filePath = "";
 portfinder.basePort = process.env.PORT || 3000;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 program.version("1.1", "-v, --version").action(async filePath => {
   if (typeof filePath === "object")
